@@ -10,9 +10,6 @@
 */
 class Envkey
 {
-
-   /**  @var string $m_SampleProperty define here what this variable is for, do this for every instance variable */
-    private $m_SampleProperty = '';
  
     /**
     * Sample method
@@ -26,11 +23,14 @@ class Envkey
     */
     public function parse()
     {
+        if (isset($_SERVER['argv'][1])) {
+            $project = $_SERVER['argv'][1];
+        }
+
         $curl = curl_init();
-        // Set some options - we are passing in a useragent too here
         curl_setopt_array($curl, [
           CURLOPT_RETURNTRANSFER => 1,
-          CURLOPT_URL => 'http://localhost:8000/api/test',
+          CURLOPT_URL => 'http://localhost:8000/api/test?project='.$project,
         ]);
         $resp = curl_exec($curl);
         // Close request to clear up some resources
@@ -38,6 +38,7 @@ class Envkey
 
         $env = json_decode($resp);
         $string =  file_get_contents('.env.example');
+        
         foreach ($env as $k => $v) {
             $string = str_replace($k, $v, $string);
         }
