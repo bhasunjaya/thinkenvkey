@@ -9,7 +9,7 @@
             "email": "bhasunjaya@gmail.com"
         }
     ],
-    
+
     "minimum-stability": "stable",
     "type": "project",
     "require": {
@@ -23,6 +23,6 @@
             "Bhasunjaya\\Envkey\\": "src/"
         }
     },
-    "bin": ["bin/envkey"]
+    "bin": ["bin/envkey.php"]
 
 }
