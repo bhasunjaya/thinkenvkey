@@ -10,7 +10,7 @@
         }
     ],
     
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "type": "project",
     "require": {
 		"php": ">=5.4"
