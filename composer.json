@@ -9,8 +9,6 @@
             "email": "bhasunjaya@gmail.com"
         }
     ],
-
-    "minimum-stability": "stable",
     "type": "project",
     "require": {
 		"php": ">=5.4"
