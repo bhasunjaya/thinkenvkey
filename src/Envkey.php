@@ -43,7 +43,7 @@ class Envkey
         $curl = curl_init();
         curl_setopt_array($curl, [
           CURLOPT_RETURNTRANSFER => 1,
-          CURLOPT_URL => 'http://localhost:8000/api/project/'.$project,
+          CURLOPT_URL => 'http://envy.tgrid.in/api/project'.$project,
         ]);
         $resp = curl_exec($curl);
         // Close request to clear up some resources
