@@ -27,22 +27,35 @@ class Envkey
             $project = $_SERVER['argv'][1];
         }
 
+        $source = '.env.example';
+        if (isset($_SERVER['argv'][2])) {
+            $source = $_SERVER['argv'][2];
+        }
+        $fileconf = '.env';
+        if (isset($_SERVER['argv'][2])) {
+            $fileconf = $_SERVER['argv'][2];
+        }
+
+        if (isset($_SERVER['argv'][1])) {
+            $project = $_SERVER['argv'][1];
+        }
+
         $curl = curl_init();
         curl_setopt_array($curl, [
           CURLOPT_RETURNTRANSFER => 1,
-          CURLOPT_URL => 'http://localhost:8000/api/test?project='.$project,
+          CURLOPT_URL => 'http://localhost:8000/api/project/'.$project,
         ]);
         $resp = curl_exec($curl);
         // Close request to clear up some resources
         curl_close($curl);
 
         $env = json_decode($resp);
-        $string =  file_get_contents('.env.example');
+        $string =  file_get_contents($source);
         
         foreach ($env as $k => $v) {
             $string = str_replace($k, $v, $string);
         }
-        file_put_contents('.env', $string);
+        file_put_contents($fileconf, $string);
         return $string;
     }
 }
