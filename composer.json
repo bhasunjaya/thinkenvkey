@@ -1,6 +1,6 @@
 {
     "name": "bhasunjaya/envkey",
-    "description": "Boilerplate package for creating other packages.",
+    "description": "For managing the .env variable",
     "keywords": ["template", "composer", "package"],
     "license": "DBAD",
     "authors": [
