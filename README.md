@@ -9,3 +9,4 @@ Install to your server
 - add this command to your post update/install 
 `envkey.php [PROJECT CODE] `
 
+
