@@ -23,8 +23,14 @@ class Envkey
      */
     public function parse()
     {
+        $project = '';
         if (isset($_SERVER['argv'][1])) {
             $project = $_SERVER['argv'][1];
+        }
+
+        if (!$project) {
+            echo "you must supply project code \n";
+            return;
         }
 
         $source = '.env.example';
@@ -50,12 +56,17 @@ class Envkey
         curl_close($curl);
 
         $env = json_decode($resp);
-        $string = file_get_contents($source);
+        $string = @file_get_contents($source);
 
+        echo "VARIABLE CHANGED\n";
+        echo "-------\n";
         foreach ($env as $k => $v) {
             $string = str_replace($k, $v, $string);
+            echo $k . "\n";
         }
+        echo "-------\n";
         file_put_contents($fileconf, $string);
-        return $string;
+
+        echo "file " . $fileconf . " has been altered according to " . $source;
     }
 }

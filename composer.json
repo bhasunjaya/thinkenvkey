@@ -21,6 +21,6 @@
             "Bhasunjaya\\Envkey\\": "src/"
         }
     },
-    "bin": ["bin/envkey.php"]
+    "bin": ["bin/envkey"]
 
 }
